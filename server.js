@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
-const GEMINI_API_KEY = "YOUR_GEMINI_KEY"; // thay bằng key thật
+const GEMINI_API_KEY = "AIzaSyBMNT25A6vQunhCsM80WnlXUplJePV_-9A"; // thay bằng key thật
 
 app.post("/generate", async (req, res) => {
   try {
@@ -14,7 +14,7 @@ app.post("/generate", async (req, res) => {
     if (!base64) return res.status(400).json({ error: "Missing image data" });
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
